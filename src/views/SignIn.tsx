@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { SignInPayload } from '../types/Auth.types'
-import { axiosPrivate } from '../utils/axiosPrivate'
+import { SignInPayload } from '../types/auth.types'
+import { axiosPublic } from '../utils/axiosPublic'
 
 type Props = {}
 
@@ -25,7 +25,7 @@ export default function SignIn({ }: Props) {
   const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    axiosPrivate.post('/token/', signIn).then((res) => {
+    axiosPublic.post('/token/', signIn).then((res) => {
       localStorage.setItem('token', res.data.access)
       localStorage.setItem('refresh', res.data.refresh)
       
